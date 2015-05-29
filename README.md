@@ -1,4 +1,4 @@
-# Semantic-Shortcode
+# Post-Shortcode
 This is wordpress plugin 
 
 This plugin is used for display posts in widget as well as shortcode.
