@@ -32,7 +32,7 @@ class PCS_Widget extends WP_Widget {
 			$ae = (!empty($instance['titleurl'])) ? "</a>" : "" ;
 			echo $args['before_title'] . $as. apply_filters( 'widget_title', $instance['title'] ). $ae. $args['after_title'];
 		}
-		$shortcode = "[pcs template='".$instance['template']."' postcount='".$instance['postno']."' showfield='".$instance['showfield']."' expertlength='".$instance['expertl']."' readmoretitle='".$instance['rmt']."' customfield='".$instance['scf']."' posttype='".$instance['postt']."' categories='".$instance['categories']."' orderby='".$instance['orderby']."' order='".$instance['order']."']";
+		$shortcode = "[pcs template='".$instance['template']."' postcount='".$instance['postno']."' showfield='".$instance['showfield']."' excerptl='".$instance['excerptl']."' readmoretitle='".$instance['rmt']."' customfield='".$instance['scf']."' posttype='".$instance['postt']."' categories='".$instance['categories']."' orderby='".$instance['orderby']."' order='".$instance['order']."']";
 		echo do_shortcode($shortcode);
 		echo $args['after_widget'];
 	}
@@ -50,7 +50,7 @@ class PCS_Widget extends WP_Widget {
 		$template = ! empty( $instance['template'] ) ? $instance['template'] :"ws";
 		$postno = ! empty( $instance['postno'] ) ? $instance['postno'] : "3";
 		$showfield = ! empty( $instance['showfield'] ) ? $instance['showfield'] : 'title,thumbnail,excerpt';
-		$expertl = ! empty( $instance['expertl'] ) ? $instance['expertl'] : __( '100', 'pcs' );
+		$excerptl = ! empty( $instance['excerptl'] ) ? $instance['excerptl'] : __( '100', 'pcs' );
 		$rmt = ! empty( $instance['rmt'] ) ? $instance['rmt'] : __( 'Read more', 'pcs' );
 		$scf = ! empty( $instance['scf'] ) ? $instance['scf'] : "";
 		$postt = ! empty( $instance['postt'] ) ? $instance['postt'] : "post";
@@ -98,7 +98,7 @@ class PCS_Widget extends WP_Widget {
 							"readme" 	=> "Show read more link",
 							"category"	=> "Show post categories",
 							"tag"		=> "Show post tags",							
-							);print_r($showfield); ?>
+							);?>
 
 		<select  class="widefat" id="<?php echo $this->get_field_id( 'showfield' ); ?>" name="<?php echo $this->get_field_name( 'showfield' ); ?>[]" multiple >
 			<?php 
@@ -117,8 +117,8 @@ class PCS_Widget extends WP_Widget {
 		</select>
 		</p>
 		<p>
-		<label for="<?php echo $this->get_field_id( 'expertl' ); ?>"><?php _e( 'Excerpt length (in words):200' ); ?></label> 
-		<input class="widefat" id="<?php echo $this->get_field_id( 'expertl' ); ?>" name="<?php echo $this->get_field_name( 'expertl' ); ?>" type="text" value="<?php echo esc_attr( $expertl ); ?>">
+		<label for="<?php echo $this->get_field_id( 'excerptl' ); ?>"><?php _e( 'Excerpt length (in words):200' ); ?></label> 
+		<input class="widefat" id="<?php echo $this->get_field_id( 'excerptl' ); ?>" name="<?php echo $this->get_field_name( 'excerptl' ); ?>" type="text" value="<?php echo esc_attr( $excerptl ); ?>">
 		</p>
 		<p>
 		<label for="<?php echo $this->get_field_id( 'rmt' ); ?>"><?php _e( 'Read more title : Read more' ); ?></label> 
@@ -240,7 +240,7 @@ class PCS_Widget extends WP_Widget {
 		$instance['template'] = ( ! empty( $new_instance['template'] ) ) ? strip_tags( $new_instance['template'] ) : '';
 		$instance['postno'] = ( ! empty( $new_instance['postno'] ) ) ? strip_tags( $new_instance['postno'] ) : '';
 		$instance['showfield'] = ( ! empty( $new_instance['showfield'] ) ) ? strip_tags( implode(",", $new_instance['showfield']) ) : '';
-		$instance['expertl'] = ( ! empty( $new_instance['expertl'] ) ) ? strip_tags( $new_instance['expertl'] ) : '';
+		$instance['excerptl'] = ( ! empty( $new_instance['excerptl'] ) ) ? strip_tags( $new_instance['excerptl'] ) : '';
 		$instance['rmt'] = ( ! empty( $new_instance['rmt'] ) ) ? strip_tags( $new_instance['rmt'] ) : '';
 		$instance['scf'] = ( ! empty( $new_instance['scf'] ) ) ? strip_tags( $new_instance['scf'] ) : '';
 		$instance['postt'] = ( ! empty( $new_instance['postt'] ) ) ? strip_tags( implode(",", $new_instance['postt']) ) : '';

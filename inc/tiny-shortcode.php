@@ -23,8 +23,10 @@ function pcs_get_all_categories($post_type = array()){
 		foreach ($post_type as $ptkey => $ptvalue) {
 			$aCategories[] = pcs_get_all_category($ptvalue);
 		}
+	elseif(!empty($post_type)):
+		$aCategories[] = pcs_get_all_category($post_type);
 	else:
-		$aCategories[] = pcs_get_all_category($ptvalue);
+		$aCategories[] = pcs_get_all_category();
 	endif;
 	return $aCategories;
 }
